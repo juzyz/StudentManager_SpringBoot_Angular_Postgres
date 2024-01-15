@@ -1,0 +1,61 @@
+<div class="bg">
+    <div class="parent">
+        <div class="child">
+            <h1 class="form-title">Add Student</h1>
+            <form class="login-form" [formGroup]="validateForm">
+
+                <mat-form-field apperance="outline" class="form-field">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" formControlName="email" placeholder="Enter Email" />
+                    <mat-error *ngIf="validateForm.get('email')?.hasError('required')">This input is
+                        Required!</mat-error>
+                    <mat-error *ngIf="validateForm.get('email')?.hasError('email')">Please enter
+                        a valid emai.</mat-error>
+                </mat-form-field>
+
+                <mat-form-field apperance="outline" class="form-field">
+                    <mat-label>Name</mat-label>
+                    <input matInput type="text" formControlName="name" placeholder="Enter Name" />
+                    <mat-error *ngIf="validateForm.get('name')?.hasError('required')">This input is
+                        Required!</mat-error>
+                </mat-form-field>
+
+                <mat-form-field apperance="outline" class="form-field">
+                    <mat-label>Date of Birth</mat-label>
+                    <input matInput [matDatepicker]="datepicker" placeholder="Choose a date"
+                        formControlName="dateOfBirth">
+                    <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+                    <mat-datepicker #datepicker>
+                        <mat-datepicker-actions>
+                            <button mat-button matDatepickerCancel>Cancel</button>
+                            <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                        </mat-datepicker-actions>
+                    </mat-datepicker>
+                    <mat-error *ngIf="validateForm.get('dateOfBirth')?.hasError('required')">This input is
+                        Required!</mat-error>
+                </mat-form-field>
+                <button mat-raised-button color="primary" (click)="createStudent()"> Add Student</button>
+                &nbsp;
+                <button mat-raised-button color="primary" (click)="getAllStudents()"> Show All Students</button>
+            </form>
+        </div>
+
+        <div class ="display-student" [hidden]="students==null">
+            <h1 class="form-card-title"> Students</h1>
+            <form>
+                <div class="card-container" fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px">
+                    <mat-card class="student-card" *ngFor="let student of students">
+                        <mat-card-header>
+                            <mat-card-title>Name <strong>{{student.name}}</strong></mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content >
+                            <p>Email: {{student.email}}</p>
+                            <p>Date of Birth: {{student.dateOfBirth}}</p>
+                        </mat-card-content>
+                        <button (click)="deleteStudent(student.id)">Delete</button>
+                    </mat-card>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

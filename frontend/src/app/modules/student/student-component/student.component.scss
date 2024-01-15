@@ -1,0 +1,93 @@
+.parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+}
+
+.child {
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-title {
+    margin-left: 130px;
+}
+
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.mat-form-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+button {
+    width: 100%;
+}
+
+@media(max-width: 768px) {
+    .parent {
+        padding: 0 10px;
+    }
+
+    .child {
+        max-width: 100%
+    }
+}
+
+
+.card-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px
+}
+
+.student-card {
+    width: calc(50% - 16px);
+    margin-bottom: 16px;
+    margin: 10px;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.student-details {
+    p {
+        margin-bottom: 8px
+    }
+}
+
+mat-card-header {
+    background-color: #6e21bb;
+    ;
+}
+
+mat-card-title {
+    color: white;
+}
+
+mat-card-content {
+    margin-top: 10px;
+}
+
+.display-student {
+    position: absolute;
+    bottom: 0
+}
+
+.form-card-title {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

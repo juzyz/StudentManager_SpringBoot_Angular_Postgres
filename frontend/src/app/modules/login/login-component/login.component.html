@@ -1,0 +1,29 @@
+<div class="bg">
+    <div class="parent">
+        <div class="child">
+            <h1 class="form-title">Login</h1>
+            <form class="login-form" [formGroup]="loginForm">
+
+                <mat-form-field apperance="outline" class="form-field">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" formControlName="email" placeholder="Enter Email" />
+                    <mat-error *ngIf="loginForm.get('email')?.hasError('required')">This input is
+                        Required!</mat-error>
+                    <mat-error *ngIf="loginForm.get('email')?.hasError('email')">Please enter
+                        address.</mat-error>
+                </mat-form-field>
+
+                <mat-form-field apperance="outline" class="form-field">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" formControlName="password" placeholder="Enter password" />
+                    <mat-error *ngIf="loginForm.get('password')?.hasError('required')">This Input Is
+                        Required!</mat-error>
+                </mat-form-field>
+                <div>
+                    <button mat-raised-button clolor="primary" (click)="login()"
+                        [disabled]="loginForm.invalid">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
