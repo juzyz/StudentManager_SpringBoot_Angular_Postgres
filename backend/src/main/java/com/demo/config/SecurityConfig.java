@@ -3,8 +3,10 @@ package com.demo.config;
 
 import com.demo.jwt.JwtAthFilter;
 import com.demo.repositories.UserDoa;
+import com.demo.services.UserService;
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -27,7 +29,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
     private final JwtAthFilter jwtAuthFilter;
-    private final UserDoa userDoa;
+//    private final UserDoa userDoa;
+
+    @Autowired
+    private UserService userService;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -69,7 +74,7 @@ public class SecurityConfig {
         return new UserDetailsService() {
             @Override
             public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-                return userDoa.findUserByEmail(email);
+                return userService.findUserByEmail(email);
             }
         };
     }
