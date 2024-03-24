@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -25,4 +26,7 @@ public class UserService {
         return new User(studentUser.getUsername(), studentUser.getPassword(), Collections.singleton(new SimpleGrantedAuthority("ROLE_ADMIN"))) ;
     }
 
+    public void saveAll(List<StudentUser> usersList) {
+        userRepository.saveAll(usersList);
+    }
 }
