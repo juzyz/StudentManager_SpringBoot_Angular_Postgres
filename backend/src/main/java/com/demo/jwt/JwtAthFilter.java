@@ -2,10 +2,12 @@ package com.demo.jwt;
 
 
 import com.demo.repositories.UserDoa;
+import com.demo.services.UserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,11 +20,11 @@ import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 
 @Component
 public class JwtAthFilter extends OncePerRequestFilter {
-    private final UserDoa userDoa;
     private final JwtUtil jwtUtil;
+    @Autowired
+    private UserService userService;
 
-    public JwtAthFilter(UserDoa userDoa, JwtUtil jwtUtil) {
-        this.userDoa = userDoa;
+    public JwtAthFilter(JwtUtil jwtUtil) {
         this.jwtUtil = jwtUtil;
     }
 
@@ -42,7 +44,7 @@ public class JwtAthFilter extends OncePerRequestFilter {
         jwtToken = authHeader.substring(7); //cut out 'Bearer'
         userEmail = jwtUtil.extractUsername(jwtToken);
         if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails = userDoa.findUserByEmail(userEmail);
+            UserDetails userDetails = userService.findUserByEmail(userEmail);
             if (jwtUtil.isValidateToken(jwtToken, userDetails)) {
                 UsernamePasswordAuthenticationToken authToken =
                         new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
