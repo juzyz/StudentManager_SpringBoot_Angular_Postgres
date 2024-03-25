@@ -16,13 +16,14 @@ import java.util.List;
 public class StudentConfig {
 
     // Spring runs CommandLineRunner bean when Spring Boot App starts
+    // Inserting initial data into student table
     @Bean
-    CommandLineRunner commandLineRunner(StudentRepository repository) {
+    CommandLineRunner studentCommandLineRunner(StudentRepository repository) {
         return args -> {
             Student piter = new Student(1L, "Piter", "piter.smithon@gmail.com",
                     LocalDate.of(2005, Month.MAY, 17));
 
-            Student alex = new Student(1L, "Alex", "alex.spenser@gmail.com",
+            Student alex = new Student(2L, "Alex", "alex.spenser@gmail.com",
                     LocalDate.of(2003, Month.NOVEMBER, 25));
             repository.saveAll(
                     List.of(piter, alex)
