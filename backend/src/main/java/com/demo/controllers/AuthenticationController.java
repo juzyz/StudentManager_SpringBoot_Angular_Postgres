@@ -4,11 +4,13 @@ import com.demo.jwt.JwtUtil;
 import com.demo.config.SecurityConfig;
 import com.demo.entities.AuthenticationRequest;
 import com.demo.repositories.UserDoa;
+import com.demo.services.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -37,8 +39,9 @@ public class AuthenticationController {
     public static final String TOKEN_PREFIX = "Bearer ";
     public static final String HEADER_STRING = "Authorization ";
     private final AuthenticationManager authenticationManager;
-    private final UserDoa userDoa;
     private final JwtUtil jwtUtil;
+    @Autowired
+    private UserService userService;
 
     @PostMapping("/authenticate")
     public void createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest, HttpServletResponse response) throws BadCredentialsException, DisabledException, UsernameNotFoundException, IOException, IOException {
@@ -47,11 +50,10 @@ public class AuthenticationController {
         } catch (BadCredentialsException e) {
             throw new BadCredentialsException("Incorrect username or password!");
         } catch (DisabledException disabledException) {
-            response.sendError(HttpServletResponse.SC_NOT_FOUND, "User is not activated");
+            response.sendError(HttpServletResponse.SC_NOT_FOUND, "StudentUser is not activated");
         }
-// need to do it via UserService
-        final UserDetails userDetails = userDoa.findUserByEmail(authenticationRequest.getEmail());
-        UserDetails userOptional = userDoa.findUserByEmail(userDetails.getUsername());
+        final UserDetails userDetails = userService.findUserByEmail(authenticationRequest.getEmail());
+        UserDetails userOptional = userService.findUserByEmail(userDetails.getUsername());
         final String jwt = jwtUtil.generateToken(userDetails.getUsername());
         if (userOptional != null) {
             response.getWriter().write(getBody(userOptional.getUsername(), jwt));
