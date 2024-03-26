@@ -22,7 +22,7 @@ export class StorageService {
   }
 
   static getToken() {
-    if (window != null) {
+    if (typeof window !== 'undefined') {
       return window.localStorage.getItem(TOKEN);
     }
     return null;
