@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
  import{HttpClientModule} from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { StudentComponent } from './student-component/student.component';
-import { AuthGuard } from '../../authentication/guards/authGard/auth.guard';
+// import { AuthGuard } from '../../authentication/guards/authGard/auth.guard';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatButtonModule} from '@angular/material/button';
@@ -12,13 +12,13 @@ import {MatNativeDateModule} from '@angular/material/core';
 
 
 const routers: Routes = [
-  {path: "dashboard", component: StudentComponent, canActivate:[AuthGuard]}
+    {path: "dashboard", component: StudentComponent}//, canActivate:[AuthGuard]}
 ];
 
 @NgModule({
-  declarations: [
-    StudentComponent
-  ],
+  // declarations: [
+  //   StudentComponent
+  // ],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -28,6 +28,7 @@ const routers: Routes = [
     MatNativeDateModule,
     MatButtonModule
   ],
-  exports: [RouterModule, StudentComponent]
+  // exports: [RouterModule, StudentComponent]
+  exports: [RouterModule ]
 })
 export class StudentModule { }
