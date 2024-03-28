@@ -7,7 +7,7 @@ import { StorageService } from '../../storage/storage.service';
   providedIn: "root"
 })
 
-export class noAuthGuard implements CanActivate {
+export class NoAuthGuard implements CanActivate {
 
   constructor(private router: Router) { }
 
