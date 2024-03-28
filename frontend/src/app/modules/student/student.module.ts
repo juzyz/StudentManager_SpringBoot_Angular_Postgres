@@ -4,10 +4,10 @@ import {CommonModule} from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { StudentComponent } from './student-component/student.component';
 // import { AuthGuard } from '../../authentication/guards/authGard/auth.guard';
-import {MatFormFieldModule}  '@angular/material/form-field';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatButtonModule} from '@angular/material/button';
-import {MatInputModule} from '@angulfromar/material/input';
+import {MatInputModule} from '@angular/material/input';
 import {MatNativeDateModule} from '@angular/material/core';
 
 
