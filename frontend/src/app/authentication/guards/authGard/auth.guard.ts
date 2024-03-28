@@ -19,7 +19,7 @@ export class AuthGuard implements CanActivate {
   ): boolean {
     if(StorageService.isUserLoggedIn()){
       this.router.navigateByUrl("/login");
-      this.snackbar.open("You don't have access to this page", "Close", {duration: 5000});  
+      this.snackbar.open("You don't have access to this page", "Close", {duration: 5000});
       return false;
     }
     return true;
