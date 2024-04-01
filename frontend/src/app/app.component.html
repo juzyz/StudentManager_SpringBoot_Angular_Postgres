@@ -1,7 +1,7 @@
 <div>
     <mat-toolbar color="primary" class="navbar">
         <span class="navbar-brand">School Management</span>
-        <span class="spacer"></span>
+        <!-- <span class="spacer"></span> -->
         <!-- <div *ngIf="isUserLoggedIn; then Logout; else Login">here is ignored</div> -->
         <ng-template #Logout>
             <button mat-button routerLink="/login" routerLinkActive="active" (click)="logout()">Logout</button>
@@ -11,6 +11,13 @@
             <!-- <button mat-button routerLink="/login" routerLinkActive="active"  (click)="logout()" ng-show="!isUserLoggedIn">Logout</button>  -->
         </ng-template>
         <!-- <button mat-button routerLink="/login" routerLinkActive="active"  (click)="logout()">Logout</button> -->
+    </mat-toolbar>
+</div>
+<div>
+    <mat-toolbar color="accent" class="navbar">        
+        <button mat-button routerLink="/student-list">Students List </button>
+        <button mat-button routerLink="/create-student">Add Student</button>
+        <button mat-button routerLink="/report">Reports</button>
     </mat-toolbar>
 </div>
 
