@@ -25,7 +25,11 @@ public class StudentService {
     public List<Student> getAllStudent() {
         return studentRepository.findAll();
     }
-
+    public Student getStudentById(Long studentId) {
+        return studentRepository.findById(studentId)
+                .orElseThrow(()-> new StudentNotFoundException(
+                        "student with id " + studentId + " does not exist"));
+    }
     public void addNewStudent(Student student) {
         Optional<Student> studentOptional = studentRepository.findStudentByEmail(student.getEmail());
         if (studentOptional.isPresent()) {
@@ -42,9 +46,7 @@ public class StudentService {
     }
 
 //    @Transactional // for multiple updates to assure they happen all-or-none.
-    public void updateStudent(@PathVariable("studentId") Long studentId,
-                              @RequestParam(required = false) String name,
-                              @RequestParam(required = false) String email) {
+    public void updateStudent(Long studentId, String name, String email) {
         Student student = studentRepository.findById(studentId)
                 .orElseThrow(() -> new StudentNotFoundException(
                         "student with id " + studentId + " does not exist")
