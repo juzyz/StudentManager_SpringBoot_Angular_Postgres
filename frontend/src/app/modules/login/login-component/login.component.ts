@@ -37,7 +37,7 @@ export class LoginComponent {
     ).subscribe((response) => {
       console.log(response);
       if (StorageService.isUserLoggedIn){
-        this.router.navigateByUrl("student");
+        this.router.navigateByUrl("student-list");
       }     
     }),
     error => {
