@@ -1,12 +1,14 @@
 package com.demo.config;
 
 
+import com.demo.entities.StudentUser;
 import com.demo.jwt.JwtAthFilter;
 import com.demo.repositories.UserDoa;
 import com.demo.services.UserService;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -24,6 +26,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import java.util.List;
+
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
@@ -34,15 +38,33 @@ public class SecurityConfig {
     @Autowired
     private UserService userService;
 
+    // Inserting initial data into student_user table
+    @Bean
+    CommandLineRunner userCommandLineRunner() {
+        return args -> {
+            StudentUser user1 = new StudentUser(
+                    "admin.mail@gmail.com",
+                    "123"
+            );
+
+            StudentUser user2 = new StudentUser(
+                    "user.mail@gmail.com",
+                    "456"
+            );
+            userService.saveAll(
+                    List.of(user1, user2)
+            );
+        };
+    }
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-
                 .cors(Customizer.withDefaults())
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(requests -> requests
-                                .requestMatchers("/api/v1/auth/authenticate").permitAll()
-                                .anyRequest().authenticated()
+                        .requestMatchers("/api/v1/auth/authenticate").permitAll()
+                        .anyRequest().authenticated()
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
