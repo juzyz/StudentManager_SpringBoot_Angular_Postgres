@@ -1,6 +1,5 @@
 package com.demo.services;
 
-//import com.demo.entities.StudentUser;
 import com.demo.entities.StudentUser;
 import com.demo.exeptions.UserNotFoundException;
 import com.demo.repositories.UserRepository;
@@ -22,7 +21,7 @@ public class UserService {
         Optional <StudentUser> test = userRepository.findUserByUsername(username);
 
         StudentUser studentUser = userRepository.findUserByUsername(username)
-                .orElseThrow(() -> new UserNotFoundException("studentUser with email " + username + " does not exist"));
+                .orElseThrow(() -> new UserNotFoundException("Student user with email " + username + " does not exist"));
         return new User(studentUser.getUsername(), studentUser.getPassword(), Collections.singleton(new SimpleGrantedAuthority("ROLE_ADMIN"))) ;
     }
 
