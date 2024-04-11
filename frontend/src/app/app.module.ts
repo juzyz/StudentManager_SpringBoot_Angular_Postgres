@@ -26,6 +26,7 @@ import { StudentListComponent } from './modules/student/student-list/student-lis
 import { CreateStudentComponent } from './modules/student/create-student/create-student.component';
 import { UpdateStudentComponent } from './modules/student/update-student/update-student.component';
 import { AttendanceReportComponent } from './modules/reports/attendance-report/attendance-report.component';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -63,7 +64,8 @@ import { AttendanceReportComponent } from './modules/reports/attendance-report/a
   ],
   providers: [
     provideClientHydration(),
-    AuthGuard
+    AuthGuard,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })
