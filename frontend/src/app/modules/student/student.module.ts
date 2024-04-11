@@ -9,7 +9,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatNativeDateModule} from '@angular/material/core';
-
+import { MatTableModule } from '@angular/material/table' ;
+import { MatIconModule } from '@angular/material/icon';
 
 const routers: Routes = [
     {path: "dashboard", component: StudentComponent}//, canActivate:[AuthGuard]}
@@ -23,8 +24,18 @@ const routers: Routes = [
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule,
+    MatIconModule
+
+
   ],
-  exports: [RouterModule ]
+  exports: [RouterModule ],
+  declarations: [
+    // StudentListComponent
+    // StudentPanelComponent
+    // CreateStudentComponent
+    // UpdateStudentComponent
+  ]
 })
 export class StudentModule { }
