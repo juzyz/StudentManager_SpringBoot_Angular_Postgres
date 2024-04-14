@@ -30,6 +30,7 @@ public class Student {
     @Email
     @Column(nullable = false, unique = true)
     private String email;
+    @Column
     private LocalDate dateOfBirth;
     @Transient
     private Integer age;
