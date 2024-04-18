@@ -35,21 +35,25 @@ public class Student {
     @Transient
     private Integer age;
 
+    @Column (nullable = false)
+    private Double averageMark;
+
     public Student() {
     }
 
-    public Student(Long id, String name, String email, LocalDate dateOfBirth) {
+    public Student(Long id, String name, String email, LocalDate dateOfBirth, Double averageMark) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
+        this.averageMark = averageMark;
     }
 
-    public Student(String name, String email, LocalDate dateOfBirth ) {
-        this.name = name;
-        this.email = email;
-        this.dateOfBirth = dateOfBirth;
-    }
+//    public Student(String name, String email, LocalDate dateOfBirth ) {
+//        this.name = name;
+//        this.email = email;
+//        this.dateOfBirth = dateOfBirth;
+//    }
     @Override
     public String toString() {
         return "Student{" +
