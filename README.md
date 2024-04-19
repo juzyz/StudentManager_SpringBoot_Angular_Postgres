@@ -6,7 +6,7 @@ A full-stack web application that showcases CRUD (Create, Read, Update, Delete) 
 
 - **Backend Module:** Built on Java 17 with **Spring Boot** (v.3.1.7) including  **Spring MVC, Spring Data JPA,** and **Spring Security** to handle the business logic.
 
-**PostgreSQL** is used as the database.
+**PostgreSQL** is used as the database. 
 
 
 
