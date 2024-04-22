@@ -97,7 +97,7 @@ The front end of the application is developed using Angular 17. It includes user
 
 To access the admin features of the application, you can use the following default credentials:
 
-- **Username:** admin.mail@gmail.com
+- **Username:** admin@gmail.com
 - **Password:** 123
   
 To explore the frontend code, navigate to the frontend directory.
