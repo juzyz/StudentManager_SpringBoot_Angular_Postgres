@@ -20,11 +20,11 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/v1/report")
 @CrossOrigin(origins = "http://localhost:4200")
-public class AttendanceTrackerController {
+public class AttendanceTrackController {
     HashMap<LocalDate, LinkedList<AttendanceTrack>> reportData = new HashMap<>();
 
     @Autowired
-    AttendanceTrackerController(StudentService studentService, AttendTrackService attendTrackService) {
+    AttendanceTrackController(StudentService studentService, AttendTrackService attendTrackService) {
         this.studentService = studentService;
         this.attendTrackService = attendTrackService;
     }
