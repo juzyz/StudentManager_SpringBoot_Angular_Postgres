@@ -18,8 +18,6 @@ public class UserService {
     private UserRepository userRepository;
 
     public  User findUserByEmail(String username) {
-        Optional <StudentUser> test = userRepository.findUserByUsername(username);
-
         StudentUser studentUser = userRepository.findUserByUsername(username)
                 .orElseThrow(() -> new UserNotFoundException("Student user with email " + username + " does not exist"));
         return new User(studentUser.getUsername(), studentUser.getPassword(), Collections.singleton(new SimpleGrantedAuthority("ROLE_ADMIN"))) ;
