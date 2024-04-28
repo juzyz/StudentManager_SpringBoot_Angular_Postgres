@@ -77,7 +77,7 @@ cd backend
 mvn spring-boot:run
 ```
 
-The back end will be accessible at http://localhost:8080.
+The back end will be accessible at http://localhost:8080. 
 
 **2 Run the front end:**
 
