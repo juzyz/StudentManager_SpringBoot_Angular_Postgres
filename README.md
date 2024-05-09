@@ -86,7 +86,7 @@ cd frontend
 ng serve
 ```
 
-The front end will be accessible at http://localhost:4200.
+The front end will be accessible at http://localhost:4200. 
 
 
 ## Front-End
