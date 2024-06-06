@@ -27,6 +27,8 @@ import { CreateStudentComponent } from './modules/student/create-student/create-
 import { UpdateStudentComponent } from './modules/student/update-student/update-student.component';
 import { AttendanceReportComponent } from './modules/reports/attendance-report/attendance-report.component';
 import { DatePipe } from '@angular/common';
+import { ReportsModule } from './modules/reports/reports.module';
+// import { ReportListComponent } from './modules/reports/report-list/report-list.component';
 
 
 
@@ -60,7 +62,7 @@ import { DatePipe } from '@angular/common';
     MatCardModule,
     MatTableModule,
     MatIconModule,
-    // CommonModule
+    ReportsModule
   ],
   providers: [
     provideClientHydration(),
